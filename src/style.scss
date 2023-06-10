@@ -1,8 +1,54 @@
 @import "./fonts/fonts.scss";
 
-#app {
-    background-color: red;
-    font-family: "Gilroy-Medium";
-    font-size: 18px;
-    font-weight: 400;
+body {
+    background-color: #242731;
+}
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        &-text {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+    }
+    &__date {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: "Gilroy-SemiBold";
+        font-size: 14px;
+        color: #fff;
+        &-day {
+            background-color: #302e5a;
+            padding: 13px 22px 12px 23px;
+            display: flex;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 14px;
+        }
+        &-time {
+            background-color: #302e5a;
+            padding: 12px 31px 11px 32px;
+            display: flex;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 14px;
+        }
+    }
 }
