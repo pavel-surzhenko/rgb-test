@@ -1,5 +1,6 @@
 @import "./fonts/fonts.scss";
 @import "./normalize.scss";
+@import "intl-tel-input/build/css/intlTelInput.css";
 
 body {
     background-color: #242731;
@@ -498,4 +499,10 @@ main {
             font-size: 14px;
         }
     }
+}
+#phone {
+    width: 100%;
+}
+.iti__country-list {
+    max-width: 250px;
 }
