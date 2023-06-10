@@ -6,38 +6,52 @@ body {
     color: #fff;
     position: relative;
     overflow-x: hidden;
+    height: 100%;
 }
 .container {
     max-width: 928px;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 10px 10px;
+    position: relative;
 }
 .circle {
     width: 400px;
     height: 400px;
-    background-color: #332f65;
-    border-radius: 50%;
     position: absolute;
-    top: -10%;
-    left: -5%;
-    opacity: 0.5;
-    filter: blur(103.131px);
-    transform: rotate(9.41deg);
-    overflow: hidden;
     z-index: -1;
+    &::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        left: -45%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #332f65;
+        opacity: 0.5;
+        filter: blur(103.131px);
+        transform: rotate(9.41deg);
+    }
 }
+
 .circle-big {
     width: 790px;
     height: 790px;
-    border-radius: 50%;
-    background-color: #332f65;
     position: absolute;
-    opacity: 0.8;
-    filter: blur(103.131px);
-    transform: rotate(9.41deg);
-    left: 70%;
-    top: -25%;
-    overflow: hidden;
+    z-index: -1;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #332f65;
+        opacity: 0.8;
+        filter: blur(103.131px);
+        transform: rotate(9.41deg);
+        left: 80%;
+        top: -25%;
+    }
 }
 .header {
     display: flex;
@@ -87,11 +101,10 @@ body {
 main {
     display: flex;
     justify-content: space-between;
-    gap: 135px;
+    gap: 20px;
 }
 .webinar {
     max-width: 427px;
-    flex-shrink: 0;
     &__logo {
         display: flex;
         align-items: center;
@@ -201,7 +214,6 @@ main {
     }
 }
 .form {
-    flex-shrink: 0;
     background-color: #303a53;
     border-radius: 10px;
     max-width: 366px;
@@ -270,14 +282,12 @@ main {
     }
 }
 .images {
-    flex-shrink: 1;
-    position: relative;
-
     & div {
         position: absolute;
     }
     &__html {
-        top: 10%;
+        top: 30%;
+        right: -20%;
         position: relative;
         & span {
             display: block;
@@ -291,7 +301,7 @@ main {
         }
     }
     &__css {
-        top: 25%;
+        top: 45%;
         right: -10%;
         & span {
             display: block;
@@ -305,7 +315,8 @@ main {
         }
     }
     &__js {
-        top: 40%;
+        top: 50%;
+        right: -20%;
         & span {
             display: block;
             width: 8px;
@@ -318,8 +329,8 @@ main {
         }
     }
     &__sublime {
-        top: 55%;
-        right: 15%;
+        top: 65%;
+        right: -10%;
         & span {
             display: block;
             width: 6px;
@@ -333,6 +344,7 @@ main {
     }
     &__vscode {
         top: 70%;
+        right: -20%;
         & span {
             display: block;
             width: 6px;
@@ -342,6 +354,148 @@ main {
             position: absolute;
             top: 10%;
             right: 0;
+        }
+    }
+}
+.webinar__info-mob {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .images,
+    .circle,
+    .circle-big {
+        display: none;
+    }
+}
+@media only screen and (max-width: 768px) {
+    body {
+        background: linear-gradient(to bottom, #242731, #242731, #332f65);
+    }
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container {
+        padding: 10px 16px;
+    }
+    .header {
+        margin-bottom: 32px;
+        padding: 28px 0 0 0;
+        &__date {
+            font-size: 11px;
+            gap: 6px;
+            &-day {
+                padding: 6px;
+            }
+            &-time {
+                padding: 6px 12px;
+            }
+        }
+        &__logo-img {
+            & img {
+                width: 27px;
+                height: 32px;
+            }
+        }
+        &__logo-text {
+            img {
+                width: 65.55px;
+                height: 9px;
+            }
+        }
+    }
+    .webinar {
+        text-align: center;
+        &__logo {
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        &__title {
+            margin: 0;
+            font-size: 52px;
+            line-height: 64.59px;
+        }
+        &__subtitle {
+            font-size: 15px;
+            line-height: 17.89px;
+            margin-top: 0;
+            justify-content: center;
+            & span {
+                font-size: 16px;
+            }
+        }
+        &__text {
+            font-size: 14px;
+            padding-bottom: 20px;
+            & span {
+                &:last-child {
+                    background-color: transparent;
+                    color: #4252d1;
+                }
+            }
+        }
+        &__info {
+            display: none;
+        }
+    }
+    .form {
+        &__container {
+            padding: 40px 21px;
+        }
+        &__title {
+            font-size: 20px;
+            line-height: 23.29px;
+            padding-bottom: 18px;
+            margin: 0 auto;
+            width: 80%;
+        }
+        form {
+            & button {
+                width: 80%;
+                margin: 0 auto;
+                background-color: #0048ff;
+            }
+        }
+        &__additional {
+            font-size: 11px;
+        }
+    }
+    .webinar__info-mob {
+        display: flex;
+        flex-direction: column;
+        max-width: 224px;
+        gap: 22px;
+        &-author {
+            display: flex;
+            gap: 11px;
+            &-logo {
+                & img {
+                    width: 51px;
+                    height: 49px;
+                }
+            }
+        }
+        &-bonus {
+            display: flex;
+            gap: 14px;
+            &-logo {
+                & img {
+                    width: 45px;
+                    height: 45px;
+                }
+            }
+        }
+    }
+    .bonus {
+        &-title {
+            font-size: 14px;
+            line-height: 20.72px;
+        }
+    }
+    .author {
+        &-title {
+            font-size: 14px;
         }
     }
 }
