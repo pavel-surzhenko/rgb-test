@@ -4,13 +4,41 @@
 body {
     background-color: #242731;
     color: #fff;
+    position: relative;
+    overflow-x: hidden;
 }
 .container {
     max-width: 928px;
     margin: 0 auto;
     padding: 10px 0;
 }
-
+.circle {
+    width: 400px;
+    height: 400px;
+    background-color: #332f65;
+    border-radius: 50%;
+    position: absolute;
+    top: -10%;
+    left: -5%;
+    opacity: 0.5;
+    filter: blur(103.131px);
+    transform: rotate(9.41deg);
+    overflow: hidden;
+    z-index: -1;
+}
+.circle-big {
+    width: 790px;
+    height: 790px;
+    border-radius: 50%;
+    background-color: #332f65;
+    position: absolute;
+    opacity: 0.8;
+    filter: blur(103.131px);
+    transform: rotate(9.41deg);
+    left: 70%;
+    top: -25%;
+    overflow: hidden;
+}
 .header {
     display: flex;
     justify-content: space-between;
@@ -52,15 +80,18 @@ body {
             align-items: center;
             gap: 6px;
             line-height: 14px;
+            z-index: 1;
         }
     }
 }
 main {
     display: flex;
     justify-content: space-between;
+    gap: 135px;
 }
 .webinar {
     max-width: 427px;
+    flex-shrink: 0;
     &__logo {
         display: flex;
         align-items: center;
@@ -78,8 +109,8 @@ main {
     &__title {
         font-family: "Gilroy-ExtraBold";
         font-size: 77px;
-        line-height: 0px;
         color: #ff3459;
+        white-space: nowrap;
     }
     &__subtitle {
         font-family: "Gilroy-Medium";
@@ -170,9 +201,11 @@ main {
     }
 }
 .form {
+    flex-shrink: 0;
     background-color: #303a53;
     border-radius: 10px;
     max-width: 366px;
+    z-index: 1;
     &__container {
         padding: 50px 58px;
     }
@@ -207,6 +240,9 @@ main {
             }
             &:focus {
                 outline: none;
+                &::placeholder {
+                    color: transparent;
+                }
             }
         }
         & button {
@@ -230,6 +266,82 @@ main {
         color: #fff;
         & a {
             color: #fff;
+        }
+    }
+}
+.images {
+    flex-shrink: 1;
+    position: relative;
+
+    & div {
+        position: absolute;
+    }
+    &__html {
+        top: 10%;
+        position: relative;
+        & span {
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: #f16529;
+            border-radius: 50%;
+            position: absolute;
+            top: 10%;
+            right: 0;
+        }
+    }
+    &__css {
+        top: 25%;
+        right: -10%;
+        & span {
+            display: block;
+            width: 6px;
+            height: 6px;
+            background-color: #2965f1;
+            border-radius: 50%;
+            position: absolute;
+            top: 10%;
+            right: 0;
+        }
+    }
+    &__js {
+        top: 40%;
+        & span {
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: #f0be25;
+            border-radius: 50%;
+            position: absolute;
+            top: 10%;
+            right: 0;
+        }
+    }
+    &__sublime {
+        top: 55%;
+        right: 15%;
+        & span {
+            display: block;
+            width: 6px;
+            height: 6px;
+            background-color: #ff9800;
+            border-radius: 50%;
+            position: absolute;
+            top: 10%;
+            right: 0;
+        }
+    }
+    &__vscode {
+        top: 70%;
+        & span {
+            display: block;
+            width: 6px;
+            height: 6px;
+            background-color: #48aef3;
+            border-radius: 50%;
+            position: absolute;
+            top: 10%;
+            right: 0;
         }
     }
 }
