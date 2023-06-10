@@ -7,7 +7,8 @@ const nameInput = document.querySelector('input[type="text"][placeholder="Ваш
 const emailInput = document.querySelector('input[type="text"][placeholder="Ваш email"]') as HTMLInputElement;
 const phoneInput = document.querySelector('#phone') as HTMLInputElement;
 
-intlTelInput(phoneInput, {
+
+const iti = intlTelInput(phoneInput, {
     separateDialCode: true,
     allowDropdown: true,
     initialCountry: 'auto',
@@ -20,14 +21,14 @@ intlTelInput(phoneInput, {
     preferredCountries: ['us', 'ua', 'gb'],
     utilsScript: 'intl-tel-input/build/js/utils.js',
 });
-
-// Оновлення вибраної країни при зміні
-phoneInput.addEventListener('countrychange', function () {
-    const countryData = window.intlTelInputGlobals.getCountryData();
-});
+const formData = {};
 
 form.addEventListener('submit', (ev) => {
     ev.preventDefault()
+
+    const countryData = iti.getSelectedCountryData();
+    const selectedCountry = countryData.dialCode;
+    console.log(selectedCountry);
 
     if (!nameInput.value || !phoneInput.value || !emailInput.value) {
         alert('Будь ласка, заповніть всі поля');
@@ -47,5 +48,11 @@ form.addEventListener('submit', (ev) => {
         alert('Будь ласка, введіть правильний номер телефону');
         return;
     }
+
+    formData.name = nameInput.value;
+    formData.email = emailInput.value;
+    formData.phone = selectedCountry + phoneInput.value;
+
+    console.log(formData);
 
 })
