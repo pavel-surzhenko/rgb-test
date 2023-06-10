@@ -6,7 +6,7 @@ body {
     color: #fff;
 }
 .container {
-    max-width: 1040px;
+    max-width: 928px;
     margin: 0 auto;
     padding: 10px 0;
 }
@@ -16,6 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 24px 0;
+    margin-bottom: 92px;
     &__logo {
         display: flex;
         align-items: center;
@@ -54,9 +55,12 @@ body {
         }
     }
 }
-
+main {
+    display: flex;
+    justify-content: space-between;
+}
 .webinar {
-    padding-top: 92px;
+    max-width: 427px;
     &__logo {
         display: flex;
         align-items: center;
@@ -78,13 +82,14 @@ body {
         color: #ff3459;
     }
     &__subtitle {
-        font-family: "Gilroy-SemiBold";
+        font-family: "Gilroy-Medium";
         font-size: 21.95px;
         display: flex;
         align-items: center;
         gap: 26px;
         margin-left: 10px;
-        padding-bottom: 20px;
+        margin-top: -25px;
+        padding-bottom: 12px;
         & span {
             font-family: "Gilroy-ExtraBold";
             font-size: 23.64px;
@@ -107,7 +112,8 @@ body {
     &__text {
         font-family: "Gilroy-Regular";
         font-size: 18px;
-        padding-bottom: 52px;
+        line-height: 26.64px;
+        padding-bottom: 40px;
         & span {
             font-family: "Gilroy-SemiBold";
             &:last-child {
@@ -137,6 +143,7 @@ body {
         font-size: 13px;
         line-height: 120%;
         font-family: "Gilroy-Bold";
+        margin: 0;
         & span {
             color: #4252d1;
         }
@@ -145,6 +152,7 @@ body {
         font-family: "Gilroy-Regular";
         font-size: 12px;
         line-height: 19.2px;
+        margin: 0;
     }
 }
 .bonus {
@@ -153,9 +161,75 @@ body {
     &-title {
         font-size: 12px;
         font-family: "Gilroy-Bold";
+        margin: 0;
     }
     &-text {
         font-family: "Gilroy-Regular";
         font-size: 12px;
+        margin: 0;
+    }
+}
+.form {
+    background-color: #303a53;
+    border-radius: 10px;
+    max-width: 366px;
+    &__container {
+        padding: 50px 58px;
+    }
+    &__title {
+        font-family: "Gilroy-Bold";
+        font-size: 22px;
+        line-height: 25.99px;
+        text-align: center;
+        padding-bottom: 20px;
+        & span {
+            color: #ff3459;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        font-family: "Gilroy-Regular";
+        font-size: 13px;
+        line-height: 24px;
+        color: #d7d7d7;
+        padding-bottom: 20px;
+        & input {
+            padding: 13px 0 14px 22px;
+            border-radius: 5px;
+            background-color: #272d3d;
+            border: none;
+            color: #d7d7d7;
+            &::placeholder {
+                color: #d7d7d7;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+        & button {
+            background-color: #ff3459;
+            font-family: "Gilroy-Bold";
+            font-size: 15px;
+            line-height: 24px;
+            color: #fff;
+            padding: 13px 0 14px 0;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    }
+    &__additional {
+        font-family: "Gilroy-Medium";
+        font-size: 12px;
+        line-height: 17.88px;
+        opacity: 0.5;
+        text-align: center;
+        color: #fff;
+        & a {
+            color: #fff;
+        }
     }
 }
