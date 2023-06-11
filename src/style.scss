@@ -509,6 +509,7 @@ main {
         max-width: 250px !important;
         background-color: #242731 !important;
         border: 1px black !important;
+        overflow-x: hidden !important;
     }
     &__arrow {
         border: none !important;
