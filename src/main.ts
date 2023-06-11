@@ -1,58 +1,39 @@
+import { iti } from './intTleInput';
+import emailjs from '@emailjs/browser';
 import './style.scss'
-import 'intl-tel-input/build/css/intlTelInput.css';
-import intlTelInput from 'intl-tel-input';
+import { isValidForm } from './validation';
+
+const SERVICE_ID = import.meta.env.VITE_SERVICE_ID
+const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID
+const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY
 
 const form = document.getElementById('form') as HTMLFormElement
-const nameInput = document.querySelector('input[type="text"][placeholder="Ваше имя и фамилия"]') as HTMLInputElement;
-const emailInput = document.querySelector('input[type="text"][placeholder="Ваш email"]') as HTMLInputElement;
-const phoneInput = document.querySelector('#phone') as HTMLInputElement;
-
-
-const iti = intlTelInput(phoneInput, {
-    separateDialCode: true,
-    allowDropdown: true,
-    initialCountry: 'auto',
-    geoIpLookup: callback => {
-        fetch("https://ipapi.co/json")
-            .then(res => res.json())
-            .then(data => callback(data.country_code))
-            .catch(() => callback("us"));
-    },
-    preferredCountries: ['us', 'ua', 'gb'],
-    utilsScript: 'intl-tel-input/build/js/utils.js',
-});
-const formData = {};
 
 form.addEventListener('submit', (ev) => {
     ev.preventDefault()
 
+    const formData = new FormData(form)
+    const isValid = isValidForm(formData)
+
     const countryData = iti.getSelectedCountryData();
     const selectedCountry = countryData.dialCode;
-    console.log(selectedCountry);
 
-    if (!nameInput.value || !phoneInput.value || !emailInput.value) {
-        alert('Будь ласка, заповніть всі поля');
-        return;
+    if (isValid) {
+        let phoneInput = form.elements.namedItem('phone') as HTMLInputElement;
+        phoneInput.value = selectedCountry + phoneInput.value
+        const errorSpan = document.createElement('span');
+
+        emailjs.sendForm(SERVICE_ID!, TEMPLATE_ID!, form, PUBLIC_KEY)
+            .then((result) => {
+                form.reset()
+                errorSpan.classList.add('no-error-span');
+                errorSpan.textContent = 'Форма відправлена!'
+                form.appendChild(errorSpan)
+                    , (error: any) => {
+                        errorSpan.classList.add('error-span');
+                        errorSpan.textContent = error
+                        form.appendChild(errorSpan);
+                    };
+            })
     }
-
-    // Перевірка правильності заповнення пошти
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-    if (!emailRegex.test(emailInput.value)) {
-        alert('Будь ласка, введіть правильну адресу електронної пошти');
-        return;
-    }
-
-    // Перевірка правильності заповнення номеру телефону
-    const phoneRegex = /^\+?[0-9]{9,}$/;
-    if (!phoneRegex.test(phoneInput.value)) {
-        alert('Будь ласка, введіть правильний номер телефону');
-        return;
-    }
-
-    formData.name = nameInput.value;
-    formData.email = emailInput.value;
-    formData.phone = selectedCountry + phoneInput.value;
-
-    console.log(formData);
-
 })

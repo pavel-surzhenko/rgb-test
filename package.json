@@ -10,11 +10,13 @@
     },
     "devDependencies": {
         "@types/intl-tel-input": "^18.1.0",
+        "@types/node": "^20.3.0",
         "sass": "^1.63.3",
         "typescript": "^5.0.2",
         "vite": "^4.3.9"
     },
     "dependencies": {
+        "@emailjs/browser": "^3.11.0",
         "intl-tel-input": "^18.1.6"
     }
 }
