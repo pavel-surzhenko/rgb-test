@@ -504,20 +504,20 @@ main {
     width: 100%;
 }
 .iti {
-    font-family: "Gilroy-Regular";
+    font-family: "Gilroy-Regular" !important;
     &__country-list {
-        max-width: 250px;
-        background-color: #242731;
-        border: 1px black;
+        max-width: 250px !important;
+        background-color: #242731 !important;
+        border: 1px black !important;
     }
     &__arrow {
-        border: none;
+        border: none !important;
     }
     &--container {
-        top: 55%;
-        left: 30%;
-        width: 100%;
-        height: 100%;
+        top: 55% !important;
+        left: 30% !important;
+        width: 100% !important;
+        height: 300px !important;
     }
 }
 .error-span {
