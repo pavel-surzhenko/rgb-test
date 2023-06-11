@@ -11,8 +11,8 @@ export const iti = intlTelInput(phoneInput, {
         fetch("https://ipapi.co/json")
             .then(res => res.json())
             .then(data => callback(data.country_code))
-            .catch(() => callback("us"));
+            .catch(() => callback("ua"));
     },
-    preferredCountries: ['us', 'ua', 'gb'],
+    preferredCountries: ['ua', 'us', 'gb'],
     utilsScript: 'intl-tel-input/build/js/utils.js',
 });
