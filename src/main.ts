@@ -24,7 +24,7 @@ form.addEventListener('submit', (ev) => {
         const errorSpan = document.createElement('span');
 
         emailjs.sendForm(SERVICE_ID!, TEMPLATE_ID!, form, PUBLIC_KEY)
-            .then((result) => {
+            .then(() => {
                 form.reset()
                 errorSpan.classList.add('no-error-span');
                 errorSpan.textContent = 'Форма відправлена!'
