@@ -1,6 +1,6 @@
+import { iti } from "./intTleInput";
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-const phoneRegex = /^\+?[0-9]{9,}$/;
 const form = document.getElementById('form') as HTMLFormElement
 
 export const isValidForm = (data: FormData) => {
@@ -22,7 +22,7 @@ export const isValidForm = (data: FormData) => {
         return false;
     }
 
-    if (!phoneRegex.test(phone as string)) {
+    if (!iti.isValidNumber()) {
         let errorSpan = form.querySelector('.error-span');
         if (!errorSpan) {
             errorSpan = document.createElement('span');

@@ -14,5 +14,5 @@ export const iti = intlTelInput(phoneInput, {
             .catch(() => callback("ua"));
     },
     preferredCountries: ['ua', 'us', 'gb'],
-    utilsScript: 'intl-tel-input/build/js/utils.js',
+    utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js'
 });
